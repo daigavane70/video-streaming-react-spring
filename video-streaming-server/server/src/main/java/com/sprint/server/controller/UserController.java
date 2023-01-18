@@ -26,7 +26,7 @@ public class UserController {
         try {
             log.info("[getAllUsers] request to get all users");
             List<User> users = userRepository.findAll();
-            log.info("[getAllUsers] get all users: {}", users);
+            log.info("[getAllUsers] get all total_users: {}", users.size());
             return new HttpApiResponse(users);
         } catch (Exception err) {
             log.error("[getAllUsers] Error: " + err);
@@ -49,8 +49,8 @@ public class UserController {
         }
     }
 
-    @PostMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public HttpApiResponse createNewUser(CreateUserRequest user) {
+    @PostMapping(value = "/user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public HttpApiResponse createNewUser(@RequestBody CreateUserRequest user) {
         try {
             log.info("[createNewUser] creating the new user for requestBody: {}", user);
             String encodedPassword = Utils.encodePassword(user.getPassword());
@@ -83,16 +83,16 @@ public class UserController {
     }
 
     @PutMapping(value = "/user")
-    public HttpApiResponse updateUser(User user) {
+    public HttpApiResponse updateUser(@RequestBody User user) {
         try {
             log.info("[updateUser] updating the user with details: {}", user);
-            List<User> userList = userRepository.findByEmail(user.getEmail());
-            if (userList == null || userList.size() < 1) {
-                log.error("[updateUser] User not found for email: {}", user.getEmail());
+            Optional<User> searchedUser = userRepository.findById(user.getId());
+            if (!searchedUser.isPresent()) {
+                log.error("[updateUser] User not found for id: {}", user.getId());
                 return new HttpApiResponse(false, null, new HttpErrorResponse(404, "User does not exist"));
             }
 
-            User existingUser = userList.get(0);
+            User existingUser = searchedUser.get();
 
             log.info("[updateUser] User found: {}", user);
 
