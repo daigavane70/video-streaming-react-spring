@@ -13,6 +13,9 @@ export default function Navbar() {
       <NavLink to={"/trade"}>
         <Button className={navbarClasses}>Trade</Button>
       </NavLink>
+      <NavLink to={"/video"}>
+        <Button className={navbarClasses}>Video</Button>
+      </NavLink>
     </div>
   );
 }
