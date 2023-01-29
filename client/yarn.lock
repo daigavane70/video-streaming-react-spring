@@ -27,10 +27,10 @@
   "resolved" "https://registry.npmjs.org/@ant-design/icons-svg/-/icons-svg-4.2.1.tgz"
   "version" "4.2.1"
 
-"@ant-design/icons@^5.0.0":
-  "integrity" "sha512-dPUlZtsIffBrDyFwM+tuO4PWi1DPgGgd10ASistPhLpr1WyssadfhChWs/mICVkCm5PaRm/foMkE1x3xw4OPZw=="
-  "resolved" "https://registry.npmjs.org/@ant-design/icons/-/icons-5.0.0.tgz"
-  "version" "5.0.0"
+"@ant-design/icons@^5.0.0", "@ant-design/icons@^5.0.1":
+  "integrity" "sha512-ZyF4ksXCcdtwA/1PLlnFLcF/q8/MhwxXhKHh4oCHDA4Ip+ZzAHoICtyp4wZWfiCVDP0yuz3HsjyvuldHFb3wjA=="
+  "resolved" "https://registry.npmjs.org/@ant-design/icons/-/icons-5.0.1.tgz"
+  "version" "5.0.1"
   dependencies:
     "@ant-design/colors" "^7.0.0"
     "@ant-design/icons-svg" "^4.2.1"
@@ -2604,10 +2604,10 @@
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz"
   "version" "4.3.5"
 
-"axios@^1.2.3":
-  "integrity" "sha512-pdDkMYJeuXLZ6Xj/Q5J3Phpe+jbGdsSzlQaFVkMQzRUL05+6+tetX8TV3p4HrU4kzuO9bt+io/yGQxuyxA/xcw=="
-  "resolved" "https://registry.npmjs.org/axios/-/axios-1.2.3.tgz"
-  "version" "1.2.3"
+"axios@^1.2.5":
+  "integrity" "sha512-9pU/8mmjSSOb4CXVsvGIevN+MlO/t9OWtKadTaLuN85Gge3HGorUckgp8A/2FH4V4hJ7JuQ3LIeI7KAV9ITZrQ=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-1.2.5.tgz"
+  "version" "1.2.5"
   dependencies:
     "follow-redirects" "^1.15.0"
     "form-data" "^4.0.0"

@@ -3,7 +3,7 @@ package com.sprint.server.controller;
 import com.sprint.common.request.CreateUserRequest;
 import com.sprint.common.response.HttpApiResponse;
 import com.sprint.common.response.HttpErrorResponse;
-import com.sprint.common.utils.Utils;
+import com.sprint.common.utils.CommonUtils;
 import com.sprint.repository.entity.User;
 import com.sprint.repository.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +53,7 @@ public class UserController {
     public HttpApiResponse createNewUser(@RequestBody CreateUserRequest user) {
         try {
             log.info("[createNewUser] creating the new user for requestBody: {}", user);
-            String encodedPassword = Utils.encodePassword(user.getPassword());
+            String encodedPassword = CommonUtils.encodePassword(user.getPassword());
             User newUser = User.builder().email(user.getEmail()).name(user.getName()).mobile(user.getMobile())
                     .password(encodedPassword).build();
 
@@ -100,7 +100,7 @@ public class UserController {
             existingUser.setMobile(user.getMobile());
             existingUser.setName(user.getName());
             if (user.getPassword() != null && !user.getPassword().isEmpty())
-                existingUser.setPassword(Utils.encodePassword(user.getPassword()));
+                existingUser.setPassword(CommonUtils.encodePassword(user.getPassword()));
 
             userRepository.save(existingUser);
 
