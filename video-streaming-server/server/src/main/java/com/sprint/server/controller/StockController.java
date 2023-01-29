@@ -2,6 +2,7 @@ package com.sprint.server.controller;
 
 import com.sprint.common.response.HttpApiResponse;
 import com.sprint.common.response.HttpErrorResponse;
+import com.sprint.common.utils.CommonUtils;
 import com.sprint.repository.entity.Stocks;
 import com.sprint.repository.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,11 @@ public class StockController {
     @GetMapping("/{id}")
     HttpApiResponse getStockById(@PathVariable int id) {
         Optional<Stocks> stocks = stockRepository.findById(Long.valueOf(id));
-        if (stocks.isPresent())
+        if (stocks.isPresent()) {
+            Stocks stocks1 = stocks.get();
+            stocks1.setPrice(CommonUtils.truncateToFixedDecimals(stocks1.getPrice()));
             return new HttpApiResponse(stocks);
+        }
         return new HttpApiResponse(false, null, new HttpErrorResponse(404, "No Stocks Found"));
     }
 }

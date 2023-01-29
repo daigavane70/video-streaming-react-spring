@@ -25,15 +25,10 @@ public class SchedulerConfig {
     @Autowired
     StockRepository stockRepository;
 
-    @PostConstruct
-    void updateStocks() {
-        this.stocks = stockRepository.findAll();
-    }
-
-    @Scheduled(fixedDelay = 2000)
+    @Scheduled(fixedDelay = 3600000)
     public void scheduleFixedDelayTask() {
-        log.info("[schedularCount] current count: {}", count);
-        count = count + Math.random() * 10;
+        this.stocks = stockRepository.findAll();
+        log.info("Update the list of all the stocks, total stocks: ", stocks.size());
     }
 
     @Scheduled(fixedDelay = 1000)

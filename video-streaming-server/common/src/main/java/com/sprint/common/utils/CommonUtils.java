@@ -7,7 +7,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 
-public class Utils {
+public class CommonUtils {
+
+
+    public static double truncateToFixedDecimals(double number) {
+        return truncateToFixedDecimals(number, 2);
+    }
+
+    public static double truncateToFixedDecimals(double number, int numOfPlaces) {
+        final double exponent = Math.pow(10d, numOfPlaces);
+        return Math.round((number * exponent)) / exponent;
+    }
 
     public static LocalDateTime stringToLocalDateTime(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATE_TIME_FORMAT);
